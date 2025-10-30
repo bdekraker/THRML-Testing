@@ -155,18 +155,4 @@ outputs/
 
 MIT (code) — figures are yours to repost with attribution to this repo.
 
----
 
-### Re-run snapshot
-
-If you want to embed the exact environment in your posts:
-
-```bash
-python - <<'PY'
-import platform, importlib.metadata as m, jax
-print("Python:", platform.python_version())
-print("JAX:", m.version("jax"))
-print("THRML:", m.version("thrml"))
-print("Devices:", [str(d) for d in jax.devices()])
-PY
-```
