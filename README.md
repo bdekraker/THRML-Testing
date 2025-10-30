@@ -52,6 +52,7 @@ We play with a physics-inspired model where each pixel prefers to agree with its
 
 <p align="center">
   <img alt="bench tradeoff ess" src="outputs/bench_tradeoff_ess.png" width="55%">&nbsp;&nbsp;
+  <br>
   <img alt="bench tradeoff raw" src="outputs/bench_tradeoff.png" width="40%">
 </p>
 
