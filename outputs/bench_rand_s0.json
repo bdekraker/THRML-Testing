@@ -1,0 +1,18 @@
+{
+  "device": [
+    "TFRT_CPU_0"
+  ],
+  "H": 28,
+  "W": 28,
+  "J": 0.35,
+  "warmup": 100,
+  "n_samples": 128,
+  "steps_per_sample": 1,
+  "blocking": "random",
+  "seed": 0,
+  "wall_sec": 0.7905256748199463,
+  "samples_per_sec": 161.917574693768,
+  "lag1_autocorr": 0.9330568313598633,
+  "tau_int_est": 28.876088040458722,
+  "ess_per_sec": 5.6073237644553116
+}

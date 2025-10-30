@@ -6,6 +6,12 @@ from thrml.models.ising import hinton_init, IsingSamplingProgram
 from models.ising_grid import make_grid_ising
 
 
+def ar1_tau_int(rho1: float) -> float:
+    """AR(1) integrated autocorrelation time approximation."""
+    rho1 = float(np.clip(rho1, -0.999, 0.999))
+    return (1.0 + rho1) / (1.0 - rho1)
+
+
 def run_once(H=28, W=28, J=0.35, warmup=100, n_samples=128, sps=1, seed=0,
              blocking="checkerboard", out_json="outputs/results.json"):
     # Build model
@@ -40,13 +46,19 @@ def run_once(H=28, W=28, J=0.35, warmup=100, n_samples=128, sps=1, seed=0,
     m0 = m - m.mean()
     lag1 = float(np.dot(m0[:-1], m0[1:]) / np.dot(m0, m0))
 
+    sps_per_sec = n_samples / dt
+    tau = ar1_tau_int(lag1)
+    ess_per_sec = sps_per_sec / tau
+
     res = {
         "device": [str(d) for d in jax.devices()],
         "H": H, "W": W, "J": J,
         "warmup": warmup, "n_samples": n_samples, "steps_per_sample": sps,
         "blocking": blocking, "seed": seed,
-        "wall_sec": dt, "samples_per_sec": n_samples / dt,
+        "wall_sec": dt, "samples_per_sec": sps_per_sec,
         "lag1_autocorr": lag1,
+        "tau_int_est": tau,
+        "ess_per_sec": ess_per_sec
     }
     os.makedirs(os.path.dirname(out_json), exist_ok=True)
     with open(out_json, "w") as f:

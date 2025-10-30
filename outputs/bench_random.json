@@ -10,7 +10,7 @@
   "steps_per_sample": 1,
   "blocking": "random",
   "seed": 0,
-  "wall_sec": 0.7675843238830566,
-  "samples_per_sec": 166.75692300811124,
+  "wall_sec": 0.8621275424957275,
+  "samples_per_sec": 148.4699115741733,
   "lag1_autocorr": 0.9330568313598633
 }
