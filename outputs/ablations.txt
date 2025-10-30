@@ -1,0 +1,4 @@
+checkerboard_samples_per_sec=159.34
+checkerboard_lag1_autocorr=0.905
+random_samples_per_sec=308.32
+random_lag1_autocorr=0.937
