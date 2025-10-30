@@ -6,6 +6,7 @@
 
 <p align="center">
   <img alt="mixing curves" src="outputs/autocorr.png" width="55%">&nbsp;&nbsp;
+  <br>
   <img alt="inpainting collage" src="outputs/inpaint_collage.png" width="35%">
 </p>
 
@@ -35,7 +36,7 @@ We play with a physics-inspired model where each pixel prefers to agree with its
 
 ---
 
-## Results (your real numbers)
+## Initial Results
 
 - **Device:** CPU (JAX on WSL2).  
 - **Quick bench:** 28×28, `warmup=100`, `n_samples=64`, `sps=1` → **~83 samples/s**.  
