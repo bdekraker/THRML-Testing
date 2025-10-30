@@ -1,0 +1,27 @@
+# Python / env
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+.venvs/
+.env*
+
+# Editors / OS
+.DS_Store
+.vscode/
+.idea/
+
+# Build / caches
+dist/
+build/
+tensorflow_datasets/
+.cache/
+
+# Outputs: ignore everything…
+outputs/**
+# …but keep the folder and shareable artifacts
+!outputs/
+!outputs/*.png
+!outputs/*.gif
+!outputs/*.txt
+!outputs/*.json
