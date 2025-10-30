@@ -6,6 +6,7 @@
 
 <p align="center">
   <img alt="mixing curves" src="outputs/autocorr.png" width="55%">&nbsp;&nbsp;
+  <br>
   <img alt="inpainting collage" src="outputs/inpaint_collage.png" width="35%">
 </p>
 
