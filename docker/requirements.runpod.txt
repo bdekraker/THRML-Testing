@@ -1,0 +1,11 @@
+# Core Python dependencies used across pipelines
+thrml>=0.0.6
+numpy
+scipy
+pillow
+imageio
+matplotlib
+tqdm
+scikit-learn
+pandas
+seaborn

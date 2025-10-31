@@ -19,7 +19,7 @@ def ar1_tau_int(rho1: float) -> float:
     return (1.0 + rho1) / (1.0 - rho1)
 
 
-def build_free_blocks(flat_nodes, checker_blocks, blocking, seed):
+def build_free_blocks(flat_nodes, checker_blocks, blocking, seed, H, W):
     if blocking == "checkerboard":
         return checker_blocks
     if blocking == "random":
@@ -30,7 +30,21 @@ def build_free_blocks(flat_nodes, checker_blocks, blocking, seed):
         b1 = [flat_nodes[i] for i in idx[:half]]
         b2 = [flat_nodes[i] for i in idx[half:]]
         return [Block(b1), Block(b2)]
-    raise ValueError("blocking must be 'checkerboard' or 'random'")
+    if blocking == "stripes":
+        stripes = [[], []]
+        for idx, node in enumerate(flat_nodes):
+            col = idx % W
+            stripes[col % 2].append(node)
+        return [Block(stripes[0]), Block(stripes[1])]
+    if blocking == "supercell":
+        cells = [[], []]
+        for idx, node in enumerate(flat_nodes):
+            row = idx // W
+            col = idx % W
+            cell = ((row // 2) + (col // 2)) % 2
+            cells[cell].append(node)
+        return [Block(cells[0]), Block(cells[1])]
+    raise ValueError("blocking must be one of 'checkerboard', 'random', 'stripes', 'supercell'")
 
 
 def run_once(
@@ -45,7 +59,7 @@ def run_once(
     blocking="checkerboard",
 ):
     model, free_blocks_chk, _, flat_nodes = make_grid_ising(H, W, J=J)
-    free_blocks = build_free_blocks(flat_nodes, free_blocks_chk, blocking, seed)
+    free_blocks = build_free_blocks(flat_nodes, free_blocks_chk, blocking, seed, H, W)
     program = IsingSamplingProgram(model, free_blocks=free_blocks, clamped_blocks=[])
     schedule = SamplingSchedule(
         n_warmup=warmup, n_samples=n_samples, steps_per_sample=sps
@@ -146,7 +160,10 @@ def main():
     parser.add_argument("--sps", type=int, nargs="+", default=[1, 2, 4])
     parser.add_argument("--seed", type=int, default=0)
     parser.add_argument(
-        "--blocking", choices=["checkerboard", "random"], nargs="+", default=["checkerboard", "random"]
+        "--blocking",
+        choices=["checkerboard", "random", "stripes", "supercell"],
+        nargs="+",
+        default=["checkerboard", "stripes", "supercell", "random"]
     )
     parser.add_argument("--num_chains", type=int, nargs="+", default=[1, 2, 4])
     parser.add_argument("--out", default="outputs")
