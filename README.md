@@ -49,10 +49,7 @@ We play with a physics-inspired model where each pixel prefers to agree with its
 - **Inpainting:** Center patch clamped from the real image; model restores **local texture** (not global digit semantics).
 **Current bench scatter (auto-aggregated):**
 
-<p align="center">
-  <img alt="bench tradeoff ess" src="outputs/bench_tradeoff_ess.png" width="55%"><br>
-  <img alt="bench tradeoff raw" src="outputs/bench_tradeoff.png" width="40%">
-</p>
+<p align="center"> <img alt="ESS/sec vs samples/sec (Pareto)" src="outputs/bench_tradeoff_ess.png" width="60%"><br> <img alt="Raw throughput: samples/sec" src="outputs/bench_tradeoff.png" width="45%"> </p> ::contentReference[oaicite:0]{index=0}
 
 **New: schedule + parallelism sweeps**
 
