@@ -51,7 +51,7 @@ We play with a physics-inspired model where each pixel prefers to agree with its
   
 **Current bench scatter (auto-aggregated):**
 
-<p align="center"> <img alt="ESS/sec vs samples/sec (Pareto)" src="outputs/bench_tradeoff_ess_20251030-204420.png" width="60%"><br> <img alt="Raw throughput: samples/sec" src="outputs/bench_tradeoff_20251030-204420.png" width="45%"> </p> ::contentReference[oaicite:0]{index=0}
+<p align="center"> <img alt="ESS/sec vs samples/sec (Pareto)" src="outputs/bench_tradeoff_ess_20251030-204420.png" width="60%"><br> <img alt="Raw throughput: samples/sec" src="outputs/bench_tradeoff_20251030-204420.png" width="45%"> </p> 
 
 **New: schedule + parallelism sweeps**
 
