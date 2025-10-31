@@ -47,6 +47,8 @@ We play with a physics-inspired model where each pixel prefers to agree with its
   - *Random halves:* **~308.3 samples/s**, lag-1 autocorr **0.937**  
   → **Trade-off:** random halves are faster but **mix worse**; checkerboard respects lattice locality.  
 - **Inpainting:** Center patch clamped from the real image; model restores **local texture** (not global digit semantics).
+
+  
 **Current bench scatter (auto-aggregated):**
 
 <p align="center"> <img alt="ESS/sec vs samples/sec (Pareto)" src="outputs/bench_tradeoff_ess_20251030-204420.png" width="60%"><br> <img alt="Raw throughput: samples/sec" src="outputs/bench_tradeoff_20251030-204420.png" width="45%"> </p> ::contentReference[oaicite:0]{index=0}
